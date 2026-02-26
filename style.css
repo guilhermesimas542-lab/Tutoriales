@@ -22,17 +22,17 @@
 /* Theme Overrides for Cuotas Page */
 body.theme-cuotas {
     --accent-glow: rgba(255, 87, 34, 0.15);
-    --telegram-color: #FF5722;
-    /* Deep Orange */
-    --telegram-hover: #E64A19;
+    /* Retaining global telegram-color so the button remains blue */
     --highlight-grad-start: #FF8A65;
     --highlight-grad-end: #FF5722;
     --highlight-glow: rgba(255, 87, 34, 0.4);
 }
 
 body.theme-cuotas .headline {
-    /* Slightly smaller base clamp to ensure the 1-line layout fits perfectly on mobile */
-    font-size: clamp(1rem, 4.2vw, 4rem);
+    /* Maximal robust font sizing for 1-line layout without overflowing mobile screens */
+    font-size: clamp(1.2rem, 5.5vw, 4rem);
+    letter-spacing: -0.04em;
+    width: 100%;
 }
 
 /* Reset and Base Styles */
@@ -94,8 +94,8 @@ header {
 
 .headline .highlight {
     /* Emphasized text styling */
-    color: var(--telegram-color);
-    /* Uses the nice blue from Telegram for consistency */
+    color: var(--highlight-grad-end);
+    /* Keep fallback color consistent with the gradient */
     background: linear-gradient(135deg, var(--highlight-grad-start), var(--highlight-grad-end));
     -webkit-background-clip: text;
     background-clip: text;
