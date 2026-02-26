@@ -1,0 +1,214 @@
+/* CSS Variables for easy theme management */
+:root {
+    /* Dark gradient background colors */
+    --bg-color-start: #020617;
+    /* Slate 950 */
+    --bg-color-end: #0f172a;
+    /* Slate 900 */
+
+    /* Text colors */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+
+    /* Accent and Button colors */
+    --accent-glow: rgba(42, 171, 238, 0.15);
+    --telegram-color: #2AABEE;
+    --telegram-hover: #1c93d4;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, var(--bg-color-start) 0%, var(--bg-color-end) 100%);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+}
+
+/* Main Container */
+.container {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Headline Styling */
+header {
+    text-align: center;
+}
+
+.headline {
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #ffffff;
+    /* Solid white for better readability */
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow for contrast against dark bg */
+    letter-spacing: -0.02em;
+}
+
+.headline .highlight {
+    /* Emphasized text styling */
+    color: var(--telegram-color);
+    /* Uses the nice blue from Telegram for consistency */
+    background: linear-gradient(135deg, #42b7f5, #2AABEE);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    filter: drop-shadow(0 0 10px rgba(42, 171, 238, 0.4));
+    white-space: nowrap;
+}
+
+/* Video Wrapper for 16:9 Aspect Ratio */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio (9 / 16 = 0.5625) */
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle glow and lift effect on hover */
+.video-wrapper:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow);
+}
+
+.video-wrapper iframe,
+.video-placeholder,
+.video-wrapper>div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Placeholder styling (remove when adding actual iframe) */
+.video-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-muted);
+    background: radial-gradient(circle at center, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+}
+
+.play-icon {
+    margin-bottom: 1rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.video-wrapper:hover .play-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Call to Action Container */
+.cta-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* Telegram Button Styling */
+.telegram-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--telegram-color);
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(42, 171, 238, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Light reflection effect inside the button for premium feel */
+.telegram-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.telegram-button:hover {
+    background-color: var(--telegram-hover);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 25px rgba(42, 171, 238, 0.4);
+}
+
+.telegram-button:hover::before {
+    opacity: 1;
+}
+
+.telegram-button:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 5px 10px rgba(42, 171, 238, 0.3);
+}
+
+/* Icon hover animation */
+.telegram-icon {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.telegram-button:hover .telegram-icon {
+    transform: translateX(4px) translateY(-3px);
+    /* Subtle paper-plane flying effect */
+}
+
+/* Intro Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsiveness adjustments */
+@media (max-width: 600px) {
+    .telegram-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
