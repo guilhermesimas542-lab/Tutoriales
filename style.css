@@ -14,6 +14,25 @@
     --accent-glow: rgba(42, 171, 238, 0.15);
     --telegram-color: #2AABEE;
     --telegram-hover: #1c93d4;
+    --highlight-grad-start: #42b7f5;
+    --highlight-grad-end: #2AABEE;
+    --highlight-glow: rgba(42, 171, 238, 0.4);
+}
+
+/* Theme Overrides for Cuotas Page */
+body.theme-cuotas {
+    --accent-glow: rgba(255, 87, 34, 0.15);
+    --telegram-color: #FF5722;
+    /* Deep Orange */
+    --telegram-hover: #E64A19;
+    --highlight-grad-start: #FF8A65;
+    --highlight-grad-end: #FF5722;
+    --highlight-glow: rgba(255, 87, 34, 0.4);
+}
+
+body.theme-cuotas .headline {
+    /* Slightly smaller base clamp to ensure the 1-line layout fits perfectly on mobile */
+    font-size: clamp(1rem, 4.2vw, 4rem);
 }
 
 /* Reset and Base Styles */
@@ -77,12 +96,12 @@ header {
     /* Emphasized text styling */
     color: var(--telegram-color);
     /* Uses the nice blue from Telegram for consistency */
-    background: linear-gradient(135deg, #42b7f5, #2AABEE);
+    background: linear-gradient(135deg, var(--highlight-grad-start), var(--highlight-grad-end));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
-    filter: drop-shadow(0 0 10px rgba(42, 171, 238, 0.4));
+    filter: drop-shadow(0 0 10px var(--highlight-glow));
 }
 
 /* Video Wrapper for 16:9 Aspect Ratio */
