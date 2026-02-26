@@ -78,6 +78,7 @@ header {
     /* Increased size significantly */
     font-weight: 800;
     line-height: 1.15;
+    text-transform: uppercase;
     color: #ffffff;
     /* Solid white for better readability */
     text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
